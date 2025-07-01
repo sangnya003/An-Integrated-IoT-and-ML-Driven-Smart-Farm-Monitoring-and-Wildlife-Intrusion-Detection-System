@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Result{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="mb-4 text-center">Classification Result</h1>
+        
+        <div class="card shadow mb-4">
+            <div class="card-body text-center">
+                <img src="{{ image_path }}" class="img-fluid mb-3" style="max-height: 400px;" alt="Uploaded Image">
+                <h3>Prediction: <span class="text-primary">{{ prediction }}</span></h3>
+                <h4>Accuracy: <span class="text-success">{{ confidence }}%</span></h4>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">About {{ prediction }}</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Description:</strong> {{ info.description }}</p>
+                <p><strong>Habitat:</strong> {{ info.habitat }}</p>
+                <p><strong>Diet:</strong> {{ info.diet }}</p>
+                <p><strong>Conservation Status:</strong> {{ info.conservation }}</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Classify Another Image</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

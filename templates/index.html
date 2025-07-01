@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+
+{% block title %}Animal Classifier{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-lg-6 animate-fade-in">
+            <h1 class="display-5 fw-bold text-primary mb-4">Animal Classifier</h1>
+            <p class="lead mb-4">
+                Discover the power of deep learning in wildlife conservation. 
+                Our advanced AI model can identify elephants, monkeys, and wild boars 
+                with remarkable accuracy.
+            </p>
+            <div class="d-grid gap-2 d-sm-flex">
+                <a href="#classify" class="btn btn-primary btn-lg px-4 gap-3">Try It Now</a>
+                <a href="/about" class="btn btn-outline-secondary btn-lg px-4">Learn More</a>
+            </div>
+        </div>
+        <div class="col-lg-6 animate-slide-in-right">
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     class="img-fluid rounded-4 shadow-lg" 
+                     alt="Wild animals collage">
+                <div class="hero-badge animate-pulse">
+                    <span class="badge bg-danger">AI Powered</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5" id="classify">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 animate-fade-in-up">
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="mb-0 text-center"><i class="fas fa-camera me-2"></i>Upload Your Image</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="/upload" enctype="multipart/form-data" id="uploadForm">
+                        <div class="mb-4 text-center">
+                            <div class="image-upload-container">
+                                <label for="fileInput" class="upload-label">
+                                    <div class="preview-container" id="imagePreview">
+                                        <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+                                        <p class="mb-1">Click to upload or drag and drop</p>
+                                        <p class="small text-muted">JPG, PNG (Max. 5MB)</p>
+                                    </div>
+                                    <input type="file" id="fileInput" name="file" accept=".jpg,.jpeg,.png" required 
+                                           class="d-none" onchange="previewImage(event)">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" disabled>
+                                <i class="fas fa-search me-2"></i>Classify Image
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5 mt-5">
+    <div class="container">
+        <h2 class="text-center mb-5 animate-fade-in">Meet the Animals</h2>
+        <div class="row g-4">
+            <div class="col-md-4 animate-slide-in-left">
+                <div class="card h-100 border-0 shadow-sm hover-zoom">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                             class="img-fluid w-100" 
+                             alt="Elephant">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 card-title">Elephant</h3>
+                        <p class="card-text">
+                            The largest land animal on Earth, known for its intelligence and strong family bonds.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><strong>Scientific Name:</strong> Loxodonta africana (African)</li>
+                            <li><strong>Weight:</strong> Up to 14,000 lbs (6,350 kg)</li>
+                            <li><strong>Habitat:</strong> Savannas, forests, deserts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-fade-in-up">
+                <div class="card h-100 border-0 shadow-sm hover-zoom">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                             class="img-fluid w-100" 
+                             alt="Monkey">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 card-title">Monkey</h3>
+                        <p class="card-text">
+                            Intelligent primates with dexterous hands and complex social structures.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><strong>Scientific Name:</strong> Varies by species</li>
+                            <li><strong>Lifespan:</strong> 10-50 years depending on species</li>
+                            <li><strong>Habitat:</strong> Tropical forests worldwide</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-slide-in-right">
+                <div class="card h-100 border-0 shadow-sm hover-zoom">
+                    <div class="card-img-top overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                             class="img-fluid w-100" 
+                             alt="Wild Boar">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h5 card-title">Wild Boar</h3>
+                        <p class="card-text">
+                            Sturdy, adaptable animals with sharp tusks, ancestors of domestic pigs.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><strong>Scientific Name:</strong> Sus scrofa</li>
+                            <li><strong>Weight:</strong> 110-330 lbs (50-150 kg)</li>
+                            <li><strong>Habitat:</strong> Forests and grasslands</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5 py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 animate-slide-in-right">
+            <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                 class="img-fluid rounded-4 shadow" 
+                 alt="AI Technology">
+        </div>
+        <div class="col-lg-6 order-lg-1 animate-fade-in">
+            <h2 class="mb-4">How Our AI Classifier Works</h2>
+            <div class="d-flex mb-4">
+                <div class="me-4">
+                    <div class="icon-circle bg-primary text-white">
+                        <i class="fas fa-brain fa-2x"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="h5">Deep Learning Model</h3>
+                    <p class="mb-0">
+                        Our convolutional neural network (CNN) was trained on thousands of images 
+                        to recognize distinctive features of each animal species.
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex mb-4">
+                <div class="me-4">
+                    <div class="icon-circle bg-success text-white">
+                        <i class="fas fa-cogs fa-2x"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="h5">Advanced Processing</h3>
+                    <p class="mb-0">
+                        The system analyzes patterns, colors, and shapes to make accurate 
+                        predictions with over 95% confidence in ideal conditions.
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="me-4">
+                    <div class="icon-circle bg-info text-white">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="h5">Continuous Improvement</h3>
+                    <p class="mb-0">
+                        The model learns from each classification, constantly improving its 
+                        accuracy through machine learning techniques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Animation Classes */
+    .animate-fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+    .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out;
+    }
+    .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out;
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out;
+    }
+    .animate-pulse {
+        animation: pulse 2s infinite;
+    }
+    
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideInLeft {
+        from { 
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to { 
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    @keyframes slideInRight {
+        from { 
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to { 
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    @keyframes fadeInUp {
+        from { 
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Custom Styles */
+    .hero-image-container {
+        position: relative;
+    }
+    .hero-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-upload-container {
+        border: 2px dashed #dee2e6;
+        border-radius: 10px;
+        padding: 2rem;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .image-upload-container:hover {
+        border-color: #0d6efd;
+        background-color: #f8f9fa;
+    }
+    .upload-label {
+        display: block;
+        cursor: pointer;
+    }
+    #imagePreview {
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .preview-image {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 8px;
+    }
+    .hover-zoom {
+        transition: transform 0.3s;
+    }
+    .hover-zoom:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+</style>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('imagePreview');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.innerHTML = `<img src="${e.target.result}" class="preview-image" alt="Preview">`;
+                submitBtn.disabled = false;
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    // Allow drag and drop
+    const uploadLabel = document.querySelector('.upload-label');
+    
+    uploadLabel.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadLabel.classList.add('bg-light');
+    });
+    
+    uploadLabel.addEventListener('dragleave', () => {
+        uploadLabel.classList.remove('bg-light');
+    });
+    
+    uploadLabel.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadLabel.classList.remove('bg-light');
+        
+        const fileInput = document.getElementById('fileInput');
+        fileInput.files = e.dataTransfer.files;
+        
+        // Trigger the change event
+        const event = new Event('change');
+        fileInput.dispatchEvent(event);
+    });
+</script>
+{% endblock %}

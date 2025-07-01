@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="mb-4">About Animal Classification</h1>
+        
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Project Overview</h3>
+                <p class="card-text">
+                    This web application uses a deep learning model to classify images of three wildlife species: 
+                    Elephants, Monkeys, and Wild Boars. The model was trained using convolutional neural networks (CNN) 
+                    to recognize distinctive features of each animal.
+                </p>
+                <p class="card-text">
+                    Our system helps in wildlife monitoring and conservation efforts by automatically identifying 
+                    these animals in images, which can be particularly useful for researchers and conservationists.
+                </p>
+            </div>
+        </div>
+        
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h3 class="card-title">How It Works</h3>
+                <ol>
+                    <li>Upload an image containing an Elephant, Monkey, or Wild Boar</li>
+                    <li>The image is processed and resized to fit our model's requirements</li>
+                    <li>Our deep learning model analyzes the image features and patterns</li>
+                    <li>The system predicts which animal is in the image with a confidence score</li>
+                    <li>Results are displayed along with interesting facts about the identified animal</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Animal Coverage</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="img-fluid rounded-circle mb-2" 
+                                 alt="Elephant" style="height: 100px; width: 100px; object-fit: cover;">
+                            <h5>Elephant</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <img src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="img-fluid rounded-circle mb-2" 
+                                 alt="Monkey" style="height: 100px; width: 100px; object-fit: cover;">
+                            <h5>Monkey</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" 
+                                 class="img-fluid rounded-circle mb-2" 
+                                 alt="Wild Boar" style="height: 100px; width: 100px; object-fit: cover;">
+                            <h5>Wild Boar</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-body">
+                <h3 class="card-title">Technical Details</h3>
+                <ul>
+                    <li><strong>Framework:</strong> Flask (Python web framework)</li>
+                    <li><strong>Deep Learning:</strong> TensorFlow/Keras</li>
+                    <li><strong>Model Architecture:</strong> Convolutional Neural Network (CNN) with transfer learning</li>
+                    <li><strong>Image Processing:</strong> 224x224 pixel normalization</li>
+                    <li><strong>Frontend:</strong> HTML, CSS, Bootstrap 5</li>
+                    <li><strong>Accuracy:</strong> ~95% on validation set</li>
+                </ul>
+                <p class="mt-3">
+                    The model was trained on thousands of images to ensure accurate classification across different 
+                    angles, lighting conditions, and backgrounds.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
